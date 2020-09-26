@@ -40,7 +40,9 @@ public class SchedulerConfig {
         for (SchedulerConfigEntity config : configs) {
             Scheduler scheduler = (Scheduler) applicationContext.getBean(config.getBeanName());
             if(Objects.isNull(futureMap.get(config.getBeanName()))) {
-                ScheduledFuture<?> schedule = taskScheduler.schedule(scheduler::schedule, new CronTrigger(config.getCron()));
+                ScheduledFuture<?> schedule = taskScheduler.schedule(()->{
+                    scheduler.schedule(config.getId());
+                }, new CronTrigger(config.getCron()));
                 futureMap.put(config.getBeanName(), schedule);
             }
         }

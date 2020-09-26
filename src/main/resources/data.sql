@@ -1,1 +1,1 @@
-INSERT INTO scheduler_config VALUES (1,'exampleSchedulerImpl','* * * * * *');
+INSERT INTO scheduler_config VALUES (1,'exampleSchedulerImpl','* * * * * *','OPEN');

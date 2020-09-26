@@ -6,5 +6,7 @@ package com.winkey.scheduler;
  */
 
 public interface Scheduler {
-    void schedule();
+    void schedule(Integer id);
+    boolean acquireLock(Integer id);
+    void resetLock(Integer id);
 }
